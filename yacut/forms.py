@@ -5,7 +5,8 @@ from wtforms.validators import (DataRequired, Length, Optional,
 
 from .models import URLMap
 from .constants import (SHORT_URL_MAX_LENGHT, SHORT_URL_MIN_LENGHT,
-                        ORIGINAL_URL_MAX_LENGHT, ORIGINAL_URL_MIN_LENGHT)
+                        ORIGINAL_URL_MAX_LENGHT, ORIGINAL_URL_MIN_LENGHT, 
+                        PATTERN_SHORT_URL)
 
 
 class LinkForm(FlaskForm):
@@ -22,7 +23,7 @@ class LinkForm(FlaskForm):
         validators=[
             Length(SHORT_URL_MIN_LENGHT, SHORT_URL_MAX_LENGHT),
             Optional(),
-            Regexp(r'^[A-Za-z0-9]+$',
+            Regexp(PATTERN_SHORT_URL,
                    message='Можно использовать только [A-Za-z0-9]')
         ]
     )

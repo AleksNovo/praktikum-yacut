@@ -14,9 +14,12 @@
 
   <body>
     {% include "header.html" %}
-    {% block content %}{% endblock content %}
+    <main>
+      {% block content %}Контент страницы отсутствует{% endblock content %}
+    </main>
     {% include "footer.html" %}
   </body>
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
