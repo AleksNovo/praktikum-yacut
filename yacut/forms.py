@@ -9,6 +9,9 @@ from .constants import (SHORT_URL_MAX_LENGHT, SHORT_URL_MIN_LENGHT,
                         PATTERN_SHORT_URL)
 
 
+CUSTOM_ID_ERROR = 'Только латинские буквы (маленькие, большие) и цифры'
+
+
 class LinkForm(FlaskForm):
     original_link = URLField(
         'Длинная ссылка',
@@ -23,8 +26,7 @@ class LinkForm(FlaskForm):
         validators=[
             Length(SHORT_URL_MIN_LENGHT, SHORT_URL_MAX_LENGHT),
             Optional(),
-            Regexp(PATTERN_SHORT_URL,
-                   message='Можно использовать только [A-Za-z0-9]')
+            Regexp(PATTERN_SHORT_URL, message=CUSTOM_ID_ERROR)
         ]
     )
     submit = SubmitField('Создать')
