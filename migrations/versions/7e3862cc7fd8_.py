@@ -1,4 +1,4 @@
-"""<сообщение>
+"""empty message
 
 Revision ID: 7e3862cc7fd8
 Revises: 
