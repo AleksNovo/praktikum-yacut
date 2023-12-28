@@ -1,75 +1,82 @@
-# YaCut
-[![Python](https://img.shields.io/badge/-Python-464646?style=flat&logo=Python&logoColor=ffffff&color=043A6B)](https://www.python.org/)
-[![Flask](https://img.shields.io/badge/-Flask-464646?style=flat&logo=Flask&logoColor=ffffff&color=043A6B)](https://www.djangoproject.com/)
-[![Jinja2](https://img.shields.io/badge/-Jinja2-464646?style=flat&logo=Jinja&logoColor=ffffff&color=043A6B)](https://www.postgresql.org/)
-[![REST](https://img.shields.io/badge/-REST-464646?style=flat&logo=REST&logoColor=ffffff&color=043A6B)](https://www.django-rest-framework.org/)
-[![SQLAlchemy](https://img.shields.io/badge/-SQLAlchemy-464646?style=flat&logo=SQLAlchemy&logoColor=ffffff&color=043A6B)](https://www.postgresql.org/)
+# YaCut — сервис укорачивания ссылок
 
+Учебный проект Яндекс Практикум (курс Python-разработчик плюс).
 
-Сервис укорачивания ссылок с web интерфейсом и REST API. Его назначение — ассоциировать длинную пользовательскую ссылку с короткой, которую предлагает сам пользователь или предоставляет сервис.
+## Описание
 
-## Ключевые возможности сервиса
-- Генерация коротких ссылок и связь их с исходными длинными ссылками
-- Переадресация на исходный адрес при обращении к коротким ссылкам
-- /api/id/ — POST-запрос на создание новой короткой ссылки;
-- /api/id/<short_id>/ — GET-запрос на получение оригинальной ссылки по указанному короткому идентификатору.
+Проект YaCut — это сервис укорачивания ссылок. Его назначение — ассоциировать длинную пользовательскую ссылку с короткой, которую предлагает сам пользователь или предоставляет сервис.
 
-Доступны web и api интерфейсы.
+Ключевые возможности сервиса:
+
+* генерация коротких ссылок и связь их с исходными длинными ссылками,
+* переадресация на исходный адрес при обращении к коротким ссылкам.
+
+Сервис состоит из пользовательского интерфейса и REST API.
 
 ## Технологии
-- Python 3.10
-- Flask 2.0
-- Jinja2 3.0
-- SQLAlchemy 1.4
 
-## Использование
-Клонировать репозиторий и перейти в него в командной строке:
+[![Python](https://img.shields.io/badge/Python-3.9-000000?logo=python)](https://www.python.org/)
+[![Flask](https://img.shields.io/badge/Flask-2.0-000000?&logo=flask)](https://flask.palletsprojects.com/)
+[![SQLite](https://img.shields.io/badge/SQLite-3-000000?logo=sqlite)](https://www.sqlite.org/)
+[![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-1.4-000000)](https://www.sqlalchemy.org/)
+[![Alembic](https://img.shields.io/badge/Alembic-1.7-000000)](https://alembic.sqlalchemy.org/)
+[![WTForms](https://img.shields.io/badge/WTForms-3.0-000000)](https://wtforms.readthedocs.io/)
+
+## Доступные эндпоинты API
+
+* `api/id/` — POST-запрос на создание новой короткой ссылки;
+* `api/id/<short_id>/` — GET-запрос на получение оригинальной ссылки по указанному короткому идентификатору.
+
+## Локальный запуск проекта
+
+Клонировать репозиторий и перейти в директорию проекта:
+
+```bash
+git clone https://github.com/AleksNovo/praktikum-yacut.git
+```
+
+```bash
+cd praktikum-yacut
+```
+
+Создать `.env` файл с переменными окружения:
 
 ```
-git clone https://github.com/AleksNovo/yacut.git
-```
-
-```
-cd yacut
+FLASK_APP=yacut
+FLASK_ENV=development
+DATABASE_URI=sqlite:///db.sqlite3
+SECRET_KEY=YOUR_SECRET_KEY
 ```
 
 Cоздать и активировать виртуальное окружение:
 
+```bash
+python -m venv venv
 ```
-python3 -m venv venv
+
+```bash
+source venv/Scripts/activate
 ```
-
-* Если у вас Linux/macOS
-
-    ```
-    source venv/bin/activate
-    ```
-
-* Если у вас windows
-
-    ```
-    source venv/scripts/activate
-    ```
 
 Установить зависимости из файла requirements.txt:
 
-```
-python3 -m pip install --upgrade pip
+```bash
+python -m pip install --upgrade pip
 ```
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
 Выполнить миграции:
 
-```commandline
+```bash
 flask db upgrade
 ```
 
-Запуск проекта:
+Запустить сервис на веб-сервере разработки Flask:
 
-```commandline
+```bash
 flask run
 ```
 
